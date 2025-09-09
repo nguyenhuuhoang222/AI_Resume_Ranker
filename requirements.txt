@@ -1,30 +1,29 @@
 # --- Data extraction ---
-python-docx==0.8.11       # Đọc file .docx
-PyPDF2==3.0.1             # Đọc file PDF
+python-docx==0.8.11       # Đọc file .docx, cần thiết cho ingestion CV Word
+PyPDF2==3.0.1             # Đọc file PDF, hỗ trợ CV PDF nếu có
 
 # --- Text processing ---
-regex==2023.8.8           # Regular expressions nâng cao
-nltk==3.8.1               # Tokenization, stopwords
-spacy==3.6.1              # NLP, Named Entity Recognition
-underthesea==1.3.2        # NLP tiếng Việt (nếu CV tiếng Việt)
-textblob==0.17.1          # Optional, simple NLP tools
+regex                     # Biểu thức chính quy nâng cao, xử lý text
+nltk                      # Tokenization, stopwords, xử lý cơ bản NLP
+spacy                     # NLP, Named Entity Recognition, trích xuất entities (skills, roles)
+textblob                  # Optional, hỗ trợ sentiment hoặc NLP đơn giản
 
 # --- Machine Learning & Vectorization ---
-scikit-learn==1.3.2       # TF-IDF, cosine similarity, ranking
-numpy==1.26.1             # Tính toán vector
-pandas==2.1.1             # Quản lý data frames
+scikit-learn              # TF-IDF vectorization, cosine similarity, scoring & ranking
+numpy                     # Tính toán số học, vector hóa
+pandas                    # Quản lý data frames, lưu trữ CV sau khi preprocess
 
 # --- Deep Learning / Embeddings ---
-sentence-transformers==2.2.2  # BERT/SBERT embedding cho semantic similarity
-faiss-cpu==1.7.4.post2         # Index nhanh cho embeddings (nếu dùng SBERT)
+sentence-transformers     # BERT/SBERT embeddings cho semantic similarity giữa CV và Job Description
+faiss-cpu==1.12.0         # Index nhanh cho embeddings, tăng tốc tìm kiếm tương đồng semantic
 
 # --- Visualization ---
-matplotlib==3.8.0          # Vẽ biểu đồ, histogram
+matplotlib                # Vẽ biểu đồ, thống kê skill distribution, visual debug
 
 # --- API / Frontend ---
-Flask==2.3.3               # Backend API
-streamlit==1.25.0          # Dashboard frontend
+Flask                     # Backend API để expose pipeline, có thể kết nối frontend
+streamlit                 # Dashboard frontend, upload Job Description & hiển thị top CVs
 
 # --- Utilities ---
-python-dotenv==1.0.1       # Load config từ .env (optional)
-tqdm==4.66.1               # Thanh tiến trình
+python-dotenv             # Load config từ file .env, ví dụ threshold, top-K
+tqdm                      # Thanh tiến trình khi xử lý nhiều file CV (>200)
